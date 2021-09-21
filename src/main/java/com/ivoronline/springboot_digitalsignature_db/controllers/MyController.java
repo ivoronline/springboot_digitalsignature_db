@@ -8,7 +8,6 @@ import com.ivoronline.springboot_digitalsignature_db.utils.UtilSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.PrivateKey;
@@ -65,7 +64,7 @@ public class MyController {
 
     //CREATE DIGITAL SIGNATURE
     byte[]              dataBytes            = UtilFiles.readBytesFromFile("Data.txt");
-    byte[]              signaturBytes        = UtilSignature.createDigitalSignature(dataBytes, "SHA256withRSA", privateKeyFromDB);
+    byte[]              signaturBytes        = UtilSignature.createSignature(dataBytes, "SHA256withRSA", privateKeyFromDB);
     UtilFiles.writeBytesToFile("Signature.bin", signaturBytes);
 
     //RETURN SOMETHING
@@ -90,7 +89,7 @@ public class MyController {
     //VALIDATE DIGITAL SIGNATURE
     byte[]              dataBytesFromFile     = UtilFiles.readBytesFromFile("Data.txt");
     byte[]              signaturBytesFromFile = UtilFiles.readBytesFromFile("Signature.bin");
-    boolean             verified              = UtilSignature.verifyDigitalSignature(dataBytesFromFile, signaturBytesFromFile, "SHA256withRSA", publicKeyFromDB);
+    boolean             verified              = UtilSignature.verifySignature(dataBytesFromFile, signaturBytesFromFile, "SHA256withRSA", publicKeyFromDB);
 
     //RETURN SOMETHING
     return "Signature verified: " + verified;

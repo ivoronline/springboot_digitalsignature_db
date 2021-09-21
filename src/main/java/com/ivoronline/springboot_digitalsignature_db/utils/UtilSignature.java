@@ -7,12 +7,12 @@ import java.security.Signature;
 public class UtilSignature {
 
   //====================================================================================
-  // CREATE DIGITAL SIGNATURE
+  // CREATE SIGNATURE
   //====================================================================================
-  // UtilSignature.createDigitalSignature("Data.txt", "Signature.txt", "SHA256withRSA", privateKey);
-  public static byte[] createDigitalSignature(
-    byte[] data,
-    String format,         //"SHA1withDSA", "SHA256withRSA"
+  // UtilSignature.creatSignature("Data.txt", "Signature.txt", "SHA256withRSA", privateKey);
+  public static byte[] createSignature(
+    byte[]     data,
+    String     format,         //"SHA1withDSA", "SHA256withRSA"
     PrivateKey privateKey
   ) throws Exception {
 
@@ -30,13 +30,13 @@ public class UtilSignature {
   }
 
   //====================================================================================
-  // VERIFY DIGITAL SIGNATURE
+  // VERIFY SIGNATURE
   //====================================================================================
-  // UtilSignature.verifyDigitalSignature("Data.txt", "Signature.txt", "SHA256withRSA", publicKeyFromFile);
-  public static boolean verifyDigitalSignature(
-    byte[] dataBytes,
-    byte[] signatureBytes,
-    String format,          //"SHA1withDSA", "SHA256withRSA"
+  // UtilSignature.verifySignature("Data.txt", "Signature.txt", "SHA256withRSA", publicKeyFromFile);
+  public static boolean verifySignature(
+    byte[]    dataBytes,
+    byte[]    signatureBytes,
+    String    format,          //"SHA1withDSA", "SHA256withRSA"
     PublicKey publicKey
   ) throws Exception {
 
